@@ -21,7 +21,7 @@ a{color:inherit;text-decoration:none}::selection{background:#f1deb6;color:#131d2
 .nav-inner{min-height:73px;display:flex;align-items:center;justify-content:space-between;gap:26px}
 .wordmark{display:flex;align-items:center;min-width:170px}.wordmark img{width:166px;height:auto;max-height:58px;object-fit:contain;display:block}
 .nav-links{display:flex;gap:26px;align-items:center;margin-left:auto}.nav-links a{font-size:12px;font-weight:560;color:#5E686C;transition:color .2s}.nav-links a:hover{color:var(--gold)}
-.topcta{border-radius:999px;background:#1A242B;color:white;padding:11px 20px;font-size:12px;font-weight:630;white-space:nowrap;transition:transform .2s,background .2s}.topcta span{margin-left:9px}.topcta:hover{background:#2C3941;transform:translateY(-1px)}
+.topcta{border-radius:999px;background:#1A242B;color:white;padding:11px 20px;font-size:12px;font-weight:630;white-space:nowrap;transition:transform .2s,background .2s}.topcta:hover{background:#2C3941;transform:translateY(-1px)}
 .hero{background:linear-gradient(112deg,#fff 15%,#FCFCFB 75%,#FBF8F0 100%);border-bottom:1px solid #EAEBE8;position:relative;overflow:hidden}
 .hero-content{display:grid;grid-template-columns:minmax(0,1fr) 208px;align-items:center;gap:44px;min-height:264px;padding:38px 0 42px}
 .eyebrow,.kicker{font-size:10px;font-weight:740;text-transform:uppercase;letter-spacing:.18em;color:#9B773E}
@@ -567,13 +567,17 @@ button:disabled{opacity:.48;box-shadow:none!important;transform:none!important;c
 .prospera-emblem__label,.explainer-item .n{color:#806031}
 @media print{.rules-link{display:none!important}}
 @media print{.timeline{break-before:page}.chart,.time-head{break-inside:avoid}.time-head{break-after:avoid}}
+/* Balanced utility controls; preserve the established premium palette. */
+.side-tools button{display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.35}
+.side-tools button:focus-visible{outline:2px solid #9B7136;outline-offset:-3px}
+
 
 
 
 
 </style></head><body><noscript><p style="font:16px/1.5 sans-serif;padding:20px;background:#fff5d8;color:#151a21">Aby korzystać z interaktywnego kalkulatora Prospera.ceo, włącz JavaScript w przeglądarce.</p></noscript>
 <div class="topline"></div>
-<a href="#main-content" class="skip-link">Przejdź do konfiguratora</a><header class="nav"><div class="shell nav-inner"><a aria-label="Prospera.ceo - strona główna" class="wordmark" href="https://prospera.ceo/"><img alt="Logo Prospera.ceo" id="logoheader"/></a><div class="nav-links"><a href="#konfigurator">Konfigurator</a><a href="#harmonogram">Harmonogram kosztów</a><a href="https://prospera.ceo/" rel="noopener" target="_blank">O Prospera.ceo </a></div><a class="topcta" href="#konfigurator">Zbuduj ofertę <span></span></a></div></header><main id="main-content">
+<a href="#main-content" class="skip-link">Przejdź do konfiguratora</a><header class="nav"><div class="shell nav-inner"><a aria-label="Prospera.ceo - strona główna" class="wordmark" href="https://prospera.ceo/"><img alt="Logo Prospera.ceo" id="logoheader"/></a><div class="nav-links"><a href="#konfigurator">Konfigurator</a><a href="#harmonogram">Harmonogram kosztów</a><a href="https://prospera.ceo/" rel="noopener" target="_blank">O Prospera.ceo </a></div><a class="topcta" href="#konfigurator">Zbuduj ofertę</a></div></header><main id="main-content">
 <section class="hero"><div class="shell hero-content"><div><div class="eyebrow">PROSPERA.CEO   /   KONFIGURATOR WSPÓŁPRACY</div><h1>Komunikacja, która<br/><span>buduje biznes.</span></h1><p class="hero-copy">Wybierz zakres działań, liczbę liderów i zobacz budżet współpracy. Ceny oraz rabaty aktualizują się automatycznie.</p></div><div aria-hidden="true" class="prospera-emblem"><div class="prospera-emblem__icon"><img alt="" id="logomark"/></div><div class="prospera-emblem__label">EXECUTIVE GROWTH SYSTEM</div></div></div><div class="hero-scroll"></div></section>
 <section class="intro" id="konfigurator"><div class="shell intro-row"><div><div class="kicker">01 / Projektowanie współpracy</div><h2>Zbuduj ofertę, która pasuje do Ciebie.</h2></div><p>Zacznij od liczby liderów. Wybieraj moduły po prawej - szczegółowy zakres rozwiniesz w każdej chwili.</p></div></section>
 <section class="pricing-section"><div class="shell pricing-grid">
