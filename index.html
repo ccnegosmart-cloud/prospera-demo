@@ -393,7 +393,7 @@ button:disabled{cursor:not-allowed;opacity:.48}
   --ui-space-1:4px;--ui-space-2:8px;--ui-space-3:12px;--ui-space-4:16px;
   --ui-space-5:20px;--ui-space-6:24px;--ui-space-7:32px;
   --ui-shadow-sm:0 2px 7px rgba(23,39,48,.035),0 9px 26px rgba(23,39,48,.025);
-  --ui-shadow-lift:0 6px 16px rgba(42,46,43,.07),0 18px 32px rgba(176,139,72,.10);
+  --ui-shadow-lift:0 8px 20px rgba(42,46,43,.09),0 20px 36px rgba(176,139,72,.14);
   --ui-spring:cubic-bezier(.22,1.32,.48,1);--ui-ease:cubic-bezier(.2,.75,.2,1);
   --ui-duration:220ms;
 }
@@ -477,28 +477,28 @@ body{background:var(--ui-canvas);color:var(--ui-ink)}
 .rules-dialog{border-radius:var(--ui-radius-xl)}
 /* Contained glow, one animation frame per update (existing handler). */
 .pricing-section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(285px circle at var(--ambient-x) var(--ambient-y),rgba(226,188,99,.19),rgba(232,202,133,.065) 44%,transparent 74%);
+  background:radial-gradient(320px circle at var(--ambient-x) var(--ambient-y),rgba(226,188,99,.25),rgba(232,202,133,.09) 44%,transparent 74%);
   opacity:0;transition:opacity 220ms ease}
 .pricing-section>.shell{position:relative;z-index:1}
 .product,.bespoke-card{position:relative;isolation:isolate;--pointer-x:50%;--pointer-y:50%}
 .product::before,.bespoke-card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(245px circle at var(--pointer-x) var(--pointer-y),rgba(236,203,120,.18),rgba(251,236,195,.06) 46%,transparent 76%);
+  background:radial-gradient(275px circle at var(--pointer-x) var(--pointer-y),rgba(236,203,120,.24),rgba(251,236,195,.085) 46%,transparent 76%);
   opacity:0;transition:opacity 200ms ease}
 .product>*,.bespoke-card>*{position:relative;z-index:1}
 @media(hover:hover) and (pointer:fine){
-  .pricing-section.ambient-is-active::before{opacity:.9}
-  .product:hover::before,.bespoke-card:hover::before{opacity:.9}
-  .product:hover,.bespoke-card:hover{transform:translateY(-3px);border-color:var(--ui-border-hover);box-shadow:var(--ui-shadow-lift)}
+  .pricing-section.ambient-is-active::before{opacity:1}
+  .product:hover::before,.bespoke-card:hover::before{opacity:1}
+  .product:hover,.bespoke-card:hover{transform:translateY(-4px);border-color:var(--ui-border-hover);box-shadow:var(--ui-shadow-lift)}
   .options button:hover,.select-btn:hover,.choice-pill:hover,.bespoke-bottom button:hover,
-  .btn-outline:hover,.btn-dark:hover,.reset:hover{transform:translateY(-3px);border-color:#CDAA62;
-    box-shadow:0 6px 14px rgba(27,41,50,.055),0 10px 26px rgba(211,174,97,.15)}
+  .btn-outline:hover,.btn-dark:hover,.reset:hover{transform:translateY(-4px);border-color:#CDAA62;
+    box-shadow:0 6px 14px rgba(27,41,50,.055),0 10px 26px rgba(211,174,97,.21)}
   .options button:hover{background:var(--ui-amber-hover);color:#4F3D1D}
   .options button.selected:hover{background:#F7E4B5;color:#513C19}
   .select-btn:hover:not(:disabled),.bespoke-bottom button:hover:not(:disabled),.choice-pill:hover{background:#F9E9C0;color:#3E3420}
   .product.active .select-btn:hover{background:#354750;color:#fff}
 }
 .options button:active,.select-btn:active,.choice-pill:active,.bespoke-bottom button:active,
-.btn-dark:active,.btn-outline:active,.reset:active{transform:scale(.98)}
+.btn-dark:active,.btn-outline:active,.reset:active{transform:scale(.975)}
 .options button:focus-visible,.select-btn:focus-visible,.choice-pill:focus-within,
 .bespoke-bottom button:focus-visible,.stepper button:focus-visible,.small-stepper button:focus-visible,
 .btn-dark:focus-visible,.btn-outline:focus-visible,.reset:focus-visible,.topcta:focus-visible{
@@ -570,6 +570,15 @@ button:disabled{opacity:.48;box-shadow:none!important;transform:none!important;c
 /* Balanced utility controls; preserve the established premium palette. */
 .side-tools button{display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.35}
 .side-tools button:focus-visible{outline:2px solid #9B7136;outline-offset:-3px}
+/* Match header and utility actions to the stronger interaction tier. */
+.topcta,.side-tools button{transition:transform 240ms var(--ui-spring),box-shadow 240ms var(--ui-ease),background-color 220ms var(--ui-ease)}
+@media(hover:hover) and (pointer:fine){
+ .topcta:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(23,39,48,.14),0 5px 18px rgba(180,139,73,.14)}
+ .side-tools button:hover{background:#fcf6e9;box-shadow:inset 0 -2px #b48b49}
+}
+.topcta:active,.side-tools button:active{transform:scale(.975)}
+@media(prefers-reduced-motion:reduce){.topcta,.side-tools button{transition:none!important;transform:none!important}}
+
 
 
 
