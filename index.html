@@ -393,7 +393,7 @@ button:disabled{cursor:not-allowed;opacity:.48}
   --ui-space-1:4px;--ui-space-2:8px;--ui-space-3:12px;--ui-space-4:16px;
   --ui-space-5:20px;--ui-space-6:24px;--ui-space-7:32px;
   --ui-shadow-sm:0 2px 7px rgba(23,39,48,.035),0 9px 26px rgba(23,39,48,.025);
-  --ui-shadow-lift:0 6px 16px rgba(42,46,43,.07),0 18px 32px rgba(176,139,72,.065);
+  --ui-shadow-lift:0 6px 16px rgba(42,46,43,.07),0 18px 32px rgba(176,139,72,.10);
   --ui-spring:cubic-bezier(.22,1.32,.48,1);--ui-ease:cubic-bezier(.2,.75,.2,1);
   --ui-duration:220ms;
 }
@@ -477,20 +477,20 @@ body{background:var(--ui-canvas);color:var(--ui-ink)}
 .rules-dialog{border-radius:var(--ui-radius-xl)}
 /* Contained glow, one animation frame per update (existing handler). */
 .pricing-section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(250px circle at var(--ambient-x) var(--ambient-y),rgba(226,188,99,.125),rgba(232,202,133,.045) 44%,transparent 74%);
+  background:radial-gradient(285px circle at var(--ambient-x) var(--ambient-y),rgba(226,188,99,.19),rgba(232,202,133,.065) 44%,transparent 74%);
   opacity:0;transition:opacity 220ms ease}
 .pricing-section>.shell{position:relative;z-index:1}
 .product,.bespoke-card{position:relative;isolation:isolate;--pointer-x:50%;--pointer-y:50%}
 .product::before,.bespoke-card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(220px circle at var(--pointer-x) var(--pointer-y),rgba(236,203,120,.125),rgba(251,236,195,.04) 46%,transparent 76%);
+  background:radial-gradient(245px circle at var(--pointer-x) var(--pointer-y),rgba(236,203,120,.18),rgba(251,236,195,.06) 46%,transparent 76%);
   opacity:0;transition:opacity 200ms ease}
 .product>*,.bespoke-card>*{position:relative;z-index:1}
 @media(hover:hover) and (pointer:fine){
-  .pricing-section.ambient-is-active::before{opacity:.7}
-  .product:hover::before,.bespoke-card:hover::before{opacity:.8}
-  .product:hover,.bespoke-card:hover{transform:translateY(-2px);border-color:var(--ui-border-hover);box-shadow:var(--ui-shadow-lift)}
+  .pricing-section.ambient-is-active::before{opacity:.9}
+  .product:hover::before,.bespoke-card:hover::before{opacity:.9}
+  .product:hover,.bespoke-card:hover{transform:translateY(-3px);border-color:var(--ui-border-hover);box-shadow:var(--ui-shadow-lift)}
   .options button:hover,.select-btn:hover,.choice-pill:hover,.bespoke-bottom button:hover,
-  .btn-outline:hover,.btn-dark:hover,.reset:hover{transform:translateY(-2px);border-color:#CDAA62;
+  .btn-outline:hover,.btn-dark:hover,.reset:hover{transform:translateY(-3px);border-color:#CDAA62;
     box-shadow:0 6px 14px rgba(27,41,50,.055),0 10px 26px rgba(211,174,97,.15)}
   .options button:hover{background:var(--ui-amber-hover);color:#4F3D1D}
   .options button.selected:hover{background:#F7E4B5;color:#513C19}
@@ -498,7 +498,7 @@ body{background:var(--ui-canvas);color:var(--ui-ink)}
   .product.active .select-btn:hover{background:#354750;color:#fff}
 }
 .options button:active,.select-btn:active,.choice-pill:active,.bespoke-bottom button:active,
-.btn-dark:active,.btn-outline:active,.reset:active{transform:scale(.985)}
+.btn-dark:active,.btn-outline:active,.reset:active{transform:scale(.98)}
 .options button:focus-visible,.select-btn:focus-visible,.choice-pill:focus-within,
 .bespoke-bottom button:focus-visible,.stepper button:focus-visible,.small-stepper button:focus-visible,
 .btn-dark:focus-visible,.btn-outline:focus-visible,.reset:focus-visible,.topcta:focus-visible{
