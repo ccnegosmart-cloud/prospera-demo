@@ -639,6 +639,17 @@ button:disabled{opacity:.48;box-shadow:none!important;transform:none!important;c
 .bespoke-picked .chosen-chip.custom{display:block;width:100%;border-color:#DDC8A1;background:#FFF;color:#21323D;border-radius:8px;font-size:12px;font-weight:600;line-height:1.5;padding:8px 10px}
 .inquiry-note{margin:2px 0 0;font-size:11px;line-height:1.5;color:#655335}
 
+/* Give upfront fees their own clear hierarchy beside the subscription. */
+@media screen{
+.quote-kpis{grid-template-columns:1fr;gap:8px}
+.quote-kpi.quote-onetime{padding:16px 18px;background:#FFF6E3;border:1px solid #C9A76C;border-left:4px solid #B48B49;box-shadow:0 3px 12px rgba(145,112,55,.05)}
+.quote-onetime label{display:block;font-size:13px;font-weight:650;color:#65491F}
+.quote-kpi.quote-onetime strong{display:block;margin:6px 0;font-size:clamp(27px,2.4vw,32px);font-weight:650;line-height:1.2;color:#21323D;overflow-wrap:anywhere}
+.onetime-caption{display:block;font-size:11px;line-height:1.5;color:#655335}
+.quote-kpi:not(.quote-onetime){display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px}
+.quote-kpi:not(.quote-onetime) strong{font-size:16px;margin:0}
+}
+
 
 
 
@@ -673,7 +684,7 @@ button:disabled{opacity:.48;box-shadow:none!important;transform:none!important;c
 </article>
 </div>
 <aside class="right" id="quote-summary" tabindex="-1"><div class="quote"><div class="quote-top"><div class="micro">TWÓJ INDYWIDUALNY ZESTAW</div><h3>Twój zestaw usług</h3><p>Dodawaj i usuwaj moduły. Wycena aktualizuje się na bieżąco.</p></div><div class="quote-total"><label id="quote-total-label">Łącznie za 6 miesięcy</label><div class="sum" id="total" aria-live="polite" aria-atomic="true">0 zł</div><div id="monthly-phases" class="monthly-phases"></div><div class="unit" id="total-caption">PLN netto | orientacyjnie</div><p class="estimation-warning" id="estimation-warning" hidden>Wybrano produkty do indywidualnej wyceny na spotkaniu, według potrzeb klienta i jego biznesu. Ich cena nie jest ujęta w pokazanych kwotach.</p></div><div class="quote-kpis">
- <div class="quote-kpi"><label>Opłaty jednorazowe</label><strong id="kpi-first">0 zł</strong></div>
+ <div class="quote-kpi quote-onetime"><label>Opłaty jednorazowe</label><strong id="kpi-first">0 zł</strong><span class="onetime-caption">Na start współpracy | netto | M1</span></div>
  <div class="quote-kpi"><label>Okres prognozy</label><strong id="kpi-leaders">1</strong></div>
 </div>
 <p id="quote-assumptions" class="quote-assumptions"></p><div class="quote-actions"><button class="btn-dark" id="printQuote" type="button">Drukuj / zapisz PDF </button><button class="btn-outline" id="sendInquiry" type="button">Zapytaj o ofertę </button><p class="quote-note">Kwoty netto | Usługi dodatkowe wyceniane indywidualnie nie są doliczane do sumy. Kalkulacja orientacyjna.</p></div><div class="chosen-wrap"><div class="chosen-label">WYBRANY ZAKRES <button class="rules-link" type="button" id="showRules" aria-haspopup="dialog">Jak liczymy? </button></div><div class="included-modules" id="included-modules"><span class="empty-choice">Wybierz pierwszą usługę, aby utworzyć zestaw.</span></div><div class="bespoke-picked" id="bespoke-list"></div></div><details class="quote-disclosure"><summary>Rozwiń szczegóły kalkulacji</summary><div class="quote-rows"><div class="quote-row summary-break"><span id="grand-total-label">Suma wycenionych usług</span><strong id="grand-total"></strong></div><div class="quote-row"><span>Wybrane moduły</span><strong id="module-count">0 z 5</strong></div><div class="quote-row quote-addon-row"><span>Usługi dodatkowe do wyceny</span><strong id="extra-count">0</strong></div><div class="quote-row"><span>Osoby wg usług</span><strong id="leader-count">1</strong></div><div class="quote-row"><span>Jednorazowe koszty na start</span><strong id="onetime">0 zł</strong></div><div class="quote-row"><span>Komunikacja / miesiąc</span><strong id="comm-month">0 zł</strong></div><div class="quote-row"><span>Market Signals / miesiąc</span><strong id="signals-month">0 zł</strong></div><div class="quote-row"><span>ZDPS / aktywny miesiąc od startu</span><strong id="zdps-month">0 zł</strong></div><div class="quote-row"><span>Twoje rabaty w prognozie</span><strong id="discount">0 zł</strong></div><div class="quote-row summary-break"><span>Pierwszy miesiąc</span><strong id="first-month">0 zł</strong></div></div></details></div><div class="side-tools"><button id="copySummary" type="button">⧉ Kopiuj zestawienie</button><button id="downloadCsv" type="button">↓ Pobierz CSV</button></div></aside>
