@@ -632,6 +632,13 @@ button:disabled{opacity:.48;box-shadow:none!important;transform:none!important;c
 }
 @media print{.selection-status{display:none}}
 
+/* Clearly distinguish selected inquiry-only services. */
+.bespoke-picked:not(:empty){margin-top:12px;padding:13px;border:1px solid #C8A568;border-left:3px solid #B48B49;border-radius:12px;background:#FFF8E9;gap:8px}
+.inquiry-title{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;margin:0 0 3px;font-size:13px;line-height:1.4;color:#21323D;font-weight:700}
+.inquiry-title>span{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:50%;background:#21323D;color:#FFF;font-size:12px}
+.bespoke-picked .chosen-chip.custom{display:block;width:100%;border-color:#DDC8A1;background:#FFF;color:#21323D;border-radius:8px;font-size:12px;font-weight:600;line-height:1.5;padding:8px 10px}
+.inquiry-note{margin:2px 0 0;font-size:11px;line-height:1.5;color:#655335}
+
 
 
 
@@ -769,8 +776,8 @@ function update(){
  el('comm-term-help').textContent=state.zdps?'ZDPS wymaga minimum 6 miesięcy komunikacji. W tej prognozie komunikacja trwa M2-M8.':'Komunikacja rozpoczyna się w M2, po przygotowaniu profilu.';
  el('extra-count').textContent=String(state.extras.length);el('signals-month').textContent=state.signals?money(3000):'0 zł';
  const chosen=Object.entries(serviceLabels).filter(([k])=>state[k]).map(([k,label])=>label+(countFields[k]?' × '+state[countFields[k]]:'')+(k==='communication'?' | '+(state.variant==='A'?'4-5':'8-9')+' postów/mies.':''));
- el('included-modules').innerHTML=chosen.length?chosen.map(x=>`<span class="chosen-chip">✓ ${x}</span>`).join(''):'<span class="empty-choice">Wybierz pierwszą usługę, aby utworzyć zestaw.</span>';
- el('bespoke-list').innerHTML=state.extras.map(id=>`<span class="chosen-chip custom">+ ${bespokeNames[id]} | wycena indywidualna</span>`).join('');
+ el('included-modules').innerHTML=chosen.length?chosen.map(x=>`<span class="chosen-chip">✓ ${x}</span>`).join(''):(state.extras.length?'':'<span class="empty-choice">Wybierz pierwszą usługę, aby utworzyć zestaw.</span>');
+ el('bespoke-list').innerHTML=state.extras.length?`<h4 class="inquiry-title">Dodane do zapytania <span>${state.extras.length}</span></h4>`+state.extras.map(id=>`<span class="chosen-chip custom"><span aria-hidden="true">✓ </span>${bespokeNames[id]}</span>`).join('')+'<p class="inquiry-note">Wycena indywidualna - poza kwotą kalkulacji.</p>':'';
  document.querySelectorAll('[data-addon]').forEach(b=>{const selected=state.extras.includes(b.dataset.addon);b.setAttribute('aria-pressed',String(selected));b.textContent=selected?'✓ W zapytaniu':'+ Dodaj do zapytania';b.closest('.bespoke-card').classList.toggle('selected',selected)});
  el('quote-total-label').textContent='Abonament miesięczny';
  const positive=c.recurring.filter(x=>x>0),lo=Math.min(...positive),hi=Math.max(...positive);
