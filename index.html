@@ -623,6 +623,15 @@ button:disabled{opacity:.48;box-shadow:none!important;transform:none!important;c
 .bespoke-card.selected{background:#FFFAF0;border-color:#B48B49}
 }
 
+/* Selected services remain visible without hover. */
+.selection-status{display:block;min-height:24px;padding:3px 0;font-size:11px;line-height:18px;font-weight:650;color:#78551E}
+@media screen{
+.product.active{background:#FFFCF5;border-color:#C3A064;box-shadow:0 0 0 1px rgba(180,139,73,.18),0 8px 24px rgba(92,71,32,.06)}
+.product.active .poster{background:linear-gradient(120deg,#FFF3D7,#FAF8F2)}
+.product.active .select-btn{background:#21323D;color:#FFF;border-color:#21323D}
+}
+@media print{.selection-status{display:none}}
+
 
 
 
@@ -746,7 +755,7 @@ function update(){
   document.querySelector(`[data-count-plus="${field}"]`).disabled=state[field]>=50;
  }
  for(const [key,label] of Object.entries(serviceLabels)){
-  const card=el('card-'+key),btn=card.querySelector('[data-toggle]');card.classList.toggle('active',state[key]);btn.textContent=(state[key]?'✓ Usuń: ':'+ Dodaj: ')+label;btn.setAttribute('aria-pressed',String(state[key]));
+  const card=el('card-'+key),btn=card.querySelector('[data-toggle]');card.classList.toggle('active',state[key]);btn.textContent=state[key]?'✓ Dodano':'+ Dodaj usługę';btn.setAttribute('aria-label',(state[key]?'Dodano: ':'Dodaj usługę: ')+label+(state[key]?'. Kliknij, aby usunąć z zestawu.':''));btn.setAttribute('aria-pressed',String(state[key]));let badge=card.querySelector('.selection-status');if(!badge){badge=document.createElement('span');badge.className='selection-status';btn.before(badge);}badge.textContent=state[key]?'W Twoim zestawie':'';
  }
  el('strategy-price').textContent=money(strategyPrice(state));
  el('strategy-unit').textContent=`${state.strategies} liderów | jednorazowo | netto`;
