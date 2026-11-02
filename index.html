@@ -684,7 +684,7 @@ button:disabled{opacity:.48;box-shadow:none!important;transform:none!important;c
 </div>
 </article>
 </div>
-<aside class="right" id="quote-summary" tabindex="-1"><div class="quote"><div class="quote-top"><div class="micro">TWÓJ INDYWIDUALNY ZESTAW</div><h3>Twój zestaw usług</h3><p>Dodawaj i usuwaj moduły. Wycena aktualizuje się na bieżąco.</p></div><div class="quote-total"><label id="quote-total-label">Łącznie za 6 miesięcy</label><div class="sum" id="total" aria-live="polite" aria-atomic="true">0 zł</div><div id="monthly-phases" class="monthly-phases"></div><div class="unit" id="total-caption">PLN netto | orientacyjnie</div><p class="estimation-warning" id="estimation-warning" hidden>Wybrano produkty do indywidualnej wyceny na spotkaniu, według potrzeb klienta i jego biznesu. Ich cena nie jest ujęta w pokazanych kwotach.</p></div><div class="quote-kpis">
+<aside class="right" id="quote-summary" tabindex="-1"><div class="quote"><div class="quote-top"><div class="micro">TWÓJ INDYWIDUALNY ZESTAW</div><h3>Twój zestaw usług</h3><p>Wybierz usługę przyciskiem lub zmień liczbę osób. Wycena aktualizuje się na bieżąco.</p></div><div class="quote-total"><label id="quote-total-label">Łącznie za 6 miesięcy</label><div class="sum" id="total" aria-live="polite" aria-atomic="true">0 zł</div><div id="monthly-phases" class="monthly-phases"></div><div class="unit" id="total-caption">PLN netto | orientacyjnie</div><p class="estimation-warning" id="estimation-warning" hidden>Wybrano produkty do indywidualnej wyceny na spotkaniu, według potrzeb klienta i jego biznesu. Ich cena nie jest ujęta w pokazanych kwotach.</p></div><div class="quote-kpis">
  <div class="quote-kpi quote-onetime"><label>Opłaty jednorazowe</label><strong id="kpi-first">0 zł</strong><span class="onetime-caption">Na start współpracy | netto | M1</span></div>
  <div class="quote-kpi"><label>Okres prognozy</label><strong id="kpi-leaders">1</strong></div>
 </div>
@@ -827,6 +827,9 @@ function toggle(key){
  if(before!==JSON.stringify(state))toast('Uzupełniliśmy wymagane profile i komunikację. ZDPS wymaga umowy komunikacyjnej minimum 6 miesięcy.');
 }
 function changeCount(field,value){
+ const service=Object.keys(countFields).find(key=>countFields[key]===field);
+ if(!service)return;
+ state[service]=true;
  state[field]=normalizeCount(value,1,50);
  let adjusted=false;
  if(field==='profilePeople'&&state.communication&&state.communicationPeople>state.profilePeople){state.communicationPeople=state.profilePeople;adjusted=true}
