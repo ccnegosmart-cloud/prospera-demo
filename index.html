@@ -769,7 +769,7 @@ function highlightQuoteChange(){
 function update(){
  const c=calc(state);
  for(const [service,field] of Object.entries(countFields)){
-  const input=el(field+'-count');input.value=state[field];
+  const input=el(field+'-count');if(input.value!==String(state[field]))input.value=state[field];
   document.querySelector(`[data-count-minus="${field}"]`).disabled=state[field]<=1;
   document.querySelector(`[data-count-plus="${field}"]`).disabled=state[field]>=50;
  }
@@ -845,7 +845,13 @@ document.querySelectorAll('[data-count]').forEach(input=>{
   const value=input.valueAsNumber;
   if(Number.isInteger(value)&&value>=1&&value<=50)changeCount(input.dataset.count,value);
  });
- input.addEventListener('change',()=>changeCount(input.dataset.count,input.value));
+ input.addEventListener('change',()=>{
+  // WebKit may dispatch change after a button click. Never re-select a service
+  // for a value already applied by input; only commit a new normalized count.
+  const field=input.dataset.count,value=normalizeCount(input.value,1,50);
+  if(value!==state[field])changeCount(field,value);
+  else input.value=String(value);
+ });
 });
 document.querySelectorAll('[data-count-minus]').forEach(b=>b.addEventListener('click',()=>changeCount(b.dataset.countMinus,state[b.dataset.countMinus]-1)));
 document.querySelectorAll('[data-count-plus]').forEach(b=>b.addEventListener('click',()=>changeCount(b.dataset.countPlus,state[b.dataset.countPlus]+1)));
@@ -876,6 +882,7 @@ el('downloadCsv').addEventListener('click',()=>{
 });
 const rulesDialog=el('rules-dialog');const openRules=el('showRules');
 openRules.addEventListener('click',()=>{if(typeof rulesDialog.showModal==='function') rulesDialog.showModal();});
+rulesDialog.addEventListener('close',()=>openRules.focus({preventScroll:true}));
 el('closeRules').addEventListener('click',()=>rulesDialog.close());
 el('acceptRules').addEventListener('click',()=>rulesDialog.close());
 rulesDialog.addEventListener('click',event=>{if(event.target===rulesDialog) rulesDialog.close();});
